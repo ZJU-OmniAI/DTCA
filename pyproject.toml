@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dtca"
+version = "0.1.0"
+description = "Denoising Token Credit Assignment built on RLDF / Drift"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {file = "LICENSE"}
+dependencies = [
+  "torch>=2.6,<2.8",
+  "transformers>=4.52,<4.53",
+  "accelerate>=1.6,<2",
+  "deepspeed>=0.16,<0.19",
+  "datasets>=3,<4",
+  "safetensors>=0.5,<1",
+  "einops>=0.8,<1",
+  "omegaconf>=2.3,<3",
+  "spacy>=3.7,<4",
+  "math-verify>=0.5,<1",
+  "numpy>=1.26,<3",
+  "sentencepiece>=0.2,<1",
+  "huggingface-hub>=0.30,<1",
+  "jinja2>=3.1,<4",
+  "tqdm>=4.67,<5",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<9"]
+
+[tool.setuptools.packages.find]
+include = ["dtca*", "trainer*", "rollout*", "models*", "reward*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q -p no:cacheprovider"

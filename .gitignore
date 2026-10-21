@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+.venv/
+build/
+dist/
+data/*.json
+models/LLaDA-8B-Instruct/
+models/en_core_web_sm/
+artifacts/
+runs/
+.env
+*.log

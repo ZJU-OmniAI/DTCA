@@ -1,0 +1,185 @@
+WEBVTT
+
+1
+00:00:00.250 --> 00:00:02.787
+Hello, today we introduce DTCA,
+
+2
+00:00:02.787 --> 00:00:06.930
+which assigns learning credit based on how much tokens help refine an answer
+
+3
+00:00:06.930 --> 00:00:08.609
+in diffusion language models.
+
+4
+00:00:09.692 --> 00:00:13.279
+To see the intuition, consider the question, “What happened at lunch?”
+
+5
+00:00:13.779 --> 00:00:15.950
+We might first think of “ate” and “apples,”
+
+6
+00:00:15.950 --> 00:00:19.015
+then add details: “Mia ate three red apples.”
+
+7
+00:00:19.515 --> 00:00:22.429
+Here, the verb and noun carry the core information.
+
+8
+00:00:22.929 --> 00:00:26.180
+This suggests that different parts of speech, or POS,
+
+9
+00:00:26.180 --> 00:00:28.432
+may contribute differently to an answer.
+
+10
+00:00:28.932 --> 00:00:31.162
+Now consider diffusion language models,
+
+11
+00:00:31.162 --> 00:00:35.748
+which build answers from an entirely masked sequence through iterative denoising.
+
+12
+00:00:36.248 --> 00:00:39.359
+Do different parts of speech contribute differently here too?
+
+13
+00:00:40.442 --> 00:00:46.281
+To investigate this, we analyze DLM-generated answers on GSM8K.
+
+14
+00:00:46.701 --> 00:00:50.289
+Figure a shows different commitment patterns across parts of speech.
+
+15
+00:00:50.709 --> 00:00:54.180
+Figure b shows how much they improve confidence at the remaining masks
+
+16
+00:00:54.180 --> 00:00:55.411
+after token commitment.
+
+17
+00:00:55.831 --> 00:00:58.734
+Verbs are prominent early and yield the largest gains,
+
+18
+00:00:58.734 --> 00:01:01.172
+followed by nouns and proper nouns.
+
+19
+00:01:01.592 --> 00:01:05.075
+These findings show that different parts of speech contribute differently.
+
+20
+00:01:05.750 --> 00:01:08.722
+Based on these findings, we propose DTCA.
+
+21
+00:01:09.142 --> 00:01:11.313
+We start by estimating contribution.
+
+22
+00:01:12.400 --> 00:01:15.465
+Committing the noun “bag” raises summed prediction confidence
+
+23
+00:01:15.465 --> 00:01:19.656
+at the same remaining masks from 0.9 to 1.5.
+
+24
+00:01:20.256 --> 00:01:23.495
+This gain of 0.6 measures its contribution.
+
+25
+00:01:24.095 --> 00:01:29.192
+We then average contributions within each POS category and convert them into weights.
+
+26
+00:01:30.275 --> 00:01:34.060
+With these weights in hand, we can choose which states to train on.
+
+27
+00:01:35.150 --> 00:01:38.273
+We rank states by contribution-weighted uncertainty
+
+28
+00:01:38.273 --> 00:01:41.164
+and select the most valuable time steps for training.
+
+29
+00:01:42.233 --> 00:01:45.972
+Next, we assign token credit within the selected state.
+
+30
+00:01:47.025 --> 00:01:51.959
+Within this state, we weight committed tokens and retained masked targets by POS,
+
+31
+00:01:51.959 --> 00:01:53.933
+then normalize these weights.
+
+32
+00:01:54.533 --> 00:01:59.316
+Multiplying the shared advantage by each weight gives us token-level learning signals.
+
+33
+00:02:00.400 --> 00:02:01.967
+Before using these signals,
+
+34
+00:02:01.967 --> 00:02:05.369
+we adjust the token credits to balance their effects on entropy.
+
+35
+00:02:06.442 --> 00:02:09.948
+In this example, entropy increases total 0.2,
+
+36
+00:02:09.948 --> 00:02:12.607
+while decreases total 0.6.
+
+37
+00:02:13.207 --> 00:02:16.864
+We rescale the credits so both totals become 0.3.
+
+38
+00:02:17.942 --> 00:02:22.470
+DTCA outperforms the base model across all tested generation budgets.
+
+39
+00:02:22.890 --> 00:02:28.718
+With 128 denoising steps, accuracy improves by 9.0 percentage points on MATH500
+
+40
+00:02:28.718 --> 00:02:31.167
+and 5.3 on GSM8K.
+
+41
+00:02:32.233 --> 00:02:34.683
+To conclude, we make three contributions.
+
+42
+00:02:35.383 --> 00:02:40.828
+First, we analyze POS differences in DLM denoising and refinement.
+
+43
+00:02:41.528 --> 00:02:46.021
+Second, DTCA uses these signals for state selection and token credit,
+
+44
+00:02:46.021 --> 00:02:49.539
+with entropy calibration adapted to DLMs.
+
+45
+00:02:50.239 --> 00:02:54.674
+Third, our experiments validate DTCA and its key components.
+
+46
+00:02:56.108 --> 00:03:00.369
+Thank you for watching, and we look forward to your feedback on DTCA.

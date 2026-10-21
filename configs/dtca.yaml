@@ -1,0 +1,91 @@
+experiment:
+  project: runs/dtca
+  checkpoint_dir: ${experiment.project}/model
+  deepspeed_file: dp_zero3
+model:
+  model_type: llada
+  pretrained_model: models/LLaDA-8B-Instruct
+training:
+  seed: 2026
+  enable_tf32: true
+  mixed_precision: bf16
+  batch_size_lm: 4
+  micro_batch_size: 1
+  num_train_epochs: 64
+  num_iterations: 1
+  epsilon_low: 0.2
+  epsilon_high: 0.2
+  beta: 0.01
+  kl_type: k3
+  entropy_coeff: 0.0
+  loss_norm: token
+  mask_strategy: dtca
+  sample_temperature: 1.0
+  mask_num: 16
+  low_prob_threshold: 0.2
+  reward_funcs: [math]
+dataset:
+  train_dataset: MATH_rldf
+  data_type: math
+rollout:
+  batch_size: 8
+  num_generations: 4
+  temperature: 1.0
+  steps: 256
+  max_gen_length: 256
+  block_size: 32
+  remasking_strategy: low_confidence_dynamic
+  target: confidence
+  dynamic_threshold: 0.9
+  use_cache: true
+  further_horizon: 128
+optimizer:
+  name: adamw
+  params:
+    learning_rate: 1.0e-6
+    beta1: 0.9
+    beta2: 0.999
+    weight_decay: 0.0
+    epsilon: 1.0e-8
+lr_scheduler:
+  scheduler: constant
+  params:
+    warmup_steps: 0
+    min_lr_scale: 1.0
+dtca:
+  enabled: true
+  table: artifacts/pos.json
+  pos_model: en_core_web_sm
+  mass: 0.7
+  min_steps: 2
+  max_steps: 32
+offline:
+  length: 256
+  temperature: 1.0
+  responses: 4
+  records: artifacts/records
+  datasets:
+    - name: MATH
+      split: train
+      path: data/MATH_rldf.json
+    - name: GSM8K
+      split: train
+      path: data/GSM8K_train.json
+evaluation:
+  eval_dataset: [MATH500, gsm8k_test]
+  data_type: math
+  temperature: 0
+  steps: [128, 256, 512]
+  max_gen_length: [128, 256, 512]
+  batch_size: 8
+  block_size: 32
+  remasking_strategy: low_confidence_dynamic
+  target: confidence
+  dynamic_threshold: 0.9
+  use_cache: true
+  further_horizon: 128
+  eval_every_steps: 5
+  eval_at_start: true
+  save_after_eval: true
+  top_k_checkpoints: 1
+  top_k_metric: eval_accuracy

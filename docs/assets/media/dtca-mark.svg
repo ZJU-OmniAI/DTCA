@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 136" width="144" height="136" role="img" aria-labelledby="dtca-title"><title id="dtca-title">DTCA Denoising D logo</title><g fill="#215B8F">
+  <rect x="6" y="6" width="28" height="28" rx="6" fill="none" stroke="#215B8F" stroke-width="4"/>
+  <rect x="38" y="6" width="28" height="28" rx="6"/>
+  <rect x="70" y="6" width="28" height="28" rx="6"/>
+  <rect x="6" y="38" width="28" height="28" rx="6" fill="none" stroke="#215B8F" stroke-width="4"/>
+  <rect x="6" y="70" width="28" height="60" rx="6"/>
+  <rect x="38" y="102" width="28" height="28" rx="6"/>
+  <rect x="70" y="102" width="28" height="28" rx="6"/>
+  <path d="M104 19C123 22 136 36 136 50H108C108 43 104 38 99 36V19Z"/>
+  <rect x="108" y="54" width="28" height="28" rx="6" fill="#C18A2C"/>
+  <path d="M108 86H136C136 105 122 121 103 127V103C106 99 108 92 108 86Z"/>
+</g></svg>
