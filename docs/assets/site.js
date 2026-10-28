@@ -1,6 +1,5 @@
 'use strict';
 (() => {
-  const config = window.DTCA_SITE_CONFIG || {};
   const $ = (selector, parent = document) => parent.querySelector(selector);
   const $$ = (selector, parent = document) => Array.from(parent.querySelectorAll(selector));
   const escape = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -27,10 +26,6 @@
     }, {rootMargin:'-15% 0px -65% 0px'});
     $$('main section[id]').forEach(section => observer.observe(section));
   }
-  if (config.codeUrl && /^https:\/\//.test(config.codeUrl)) {
-    $('#code-link').href = config.codeUrl;
-  }
-
   const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
   const activeMotions = new Set();
   const elementMotion = new WeakMap();

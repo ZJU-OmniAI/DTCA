@@ -2,7 +2,7 @@
   <p><img src="assets/cover.png" alt="DTCA: Denoising Token Credit Assignment for Reinforcement Learning in Diffusion Language Models" width="100%"></p>
   <p>
     <a href="https://zju-omniai.github.io/DTCA/"><img src="https://img.shields.io/badge/-Project_Page-215B8F?style=for-the-badge&amp;logo=googlechrome&amp;logoColor=white" alt="Project Page"></a>
-    <a href="docs/assets/resources/dtca-paper.pdf"><img src="https://img.shields.io/badge/-Paper-B31B1B?style=for-the-badge&amp;logo=readthedocs&amp;logoColor=white" alt="Paper"></a>
+    <a href="https://arxiv.org/abs/2610.35201"><img src="https://img.shields.io/badge/-Paper-B31B1B?style=for-the-badge&amp;logo=readthedocs&amp;logoColor=white" alt="Paper"></a>
     <a href="pyproject.toml"><img src="https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&amp;logo=python&amp;logoColor=white" alt="Python 3.10+"></a>
     <a href="LICENSE"><img src="https://img.shields.io/badge/License-Apache--2.0-2F855A?style=for-the-badge&amp;logo=apache&amp;logoColor=white" alt="Apache-2.0 license"></a>
   </p>
@@ -136,18 +136,11 @@ If you use DTCA in your research, please cite:
 @misc{chen2026dtca,
   title  = {{DTCA}: Denoising Token Credit Assignment for Reinforcement Learning in Diffusion Language Models},
   author = {Chen, Hongze and Pan, Miao and Liang, Lizhou and Li, Qinfeng and Ma, Xinyin and Shen, Yongliang and Wang, Weishi and Dahlmeier, Daniel and Zhang, Xuhong and Zhang, Wenqi},
-  year   = {2026}
-}
-```
-
-Please also cite the upstream RLDF work:
-
-```bibtex
-@article{he2026reinforcement,
-  title={Reinforcement Learning from Denoising Feedback},
-  author={He, Qi and Chen, Huan and Guo, Ya and Zhu, Huijia and Fung, Yi R and Zhou, Baojian},
-  journal={arXiv preprint arXiv:2605.25638},
-  year={2026}
+  year   = {2026},
+  eprint = {2610.35201},
+  archivePrefix = {arXiv},
+  primaryClass = {cs.CL},
+  url    = {https://arxiv.org/abs/2610.35201}
 }
 ```
 
