@@ -133,14 +133,14 @@ by [OPEFO](https://arxiv.org/abs/2605.11491).
 If you use DTCA in your research, please cite:
 
 ```bibtex
-@misc{chen2026dtca,
-  title  = {{DTCA}: Denoising Token Credit Assignment for Reinforcement Learning in Diffusion Language Models},
-  author = {Chen, Hongze and Pan, Miao and Liang, Lizhou and Li, Qinfeng and Ma, Xinyin and Shen, Yongliang and Wang, Weishi and Dahlmeier, Daniel and Zhang, Xuhong and Zhang, Wenqi},
-  year   = {2026},
-  eprint = {2610.35201},
-  archivePrefix = {arXiv},
-  primaryClass = {cs.CL},
-  url    = {https://arxiv.org/abs/2610.35201}
+@misc{chen2026dtcadenoisingtokencredit,
+      title={DTCA: Denoising Token Credit Assignment for Reinforcement Learning in Diffusion Language Models},
+      author={Hongze Chen and Miao Pan and Lizhou Liang and Qinfeng Li and Xinyin Ma and Yongliang Shen and Weishi Wang and Daniel Dahlmeier and Xuhong Zhang and Wenqi Zhang},
+      year={2026},
+      eprint={2610.35201},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2610.35201},
 }
 ```
 
